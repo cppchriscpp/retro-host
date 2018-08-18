@@ -1,0 +1,8 @@
+body {
+    overflow: hidden;
+}
+
+#controlBar_loadRomButton, #controlBar_playButton, #controlBar_debugButton, #controlBar_gameGenieButton, #controlBar_errorDisplay, #controlBar_quickSaveButton, #controlBar_quickLoadButton, label[for="controlBar_debugButton"], .controlBarSeperator {
+    display: none;
+}
+    

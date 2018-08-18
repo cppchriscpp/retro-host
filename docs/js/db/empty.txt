@@ -1,0 +1,5 @@
+This database is for all known commercial games to set up some defaults.
+
+We don't really care about those, so I've deleted those files to not clutter up git.
+
+Enjoy.
