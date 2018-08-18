@@ -2,4 +2,4 @@
 
 ????
 
-My Rom is <strong>"{{ content.rom }}"</strong>
+My Rom is <strong>"{{ include.rom }}"</strong>
