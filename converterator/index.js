@@ -84,7 +84,7 @@ fs.readdir(path.join(__dirname, '..', 'games'), function(err, gamesList) {
 
         let fullMdContents = `---
 title: "${gameDetails.attributes.title}"
-permalink: games/${game}
+permalink: games/${game.replace('.md', '')}
 ---
 
 # ${gameDetails.attributes.title}
@@ -98,7 +98,7 @@ ${gameDetails.body}
 
     let embedMdContents = `---
 title: "${gameDetails.attributes.title}"
-permalink: games/${game}/embed.md
+permalink: games/${game.replace('.md', '')}/embed
 ---
 
 {% include ${gameDetails.attributes.emulator}.md rom="${gameDetails.attributes.rom}" %}

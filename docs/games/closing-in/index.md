@@ -1,6 +1,6 @@
 ---
 title: "Closing In: Barney's Daring Escape"
-permalink: games/closing-in.md
+permalink: games/closing-in
 ---
 
 # Closing In: Barney's Daring Escape
