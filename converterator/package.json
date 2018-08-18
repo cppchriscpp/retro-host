@@ -1,0 +1,24 @@
+{
+  "name": "retro-host-converter",
+  "version": "1.0.0",
+  "description": "Converts markdown descriptions into proper pages with emulators. Specific to parent repository.",
+  "main": "index.js",
+  "dependencies": {
+    "front-matter": "^2.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo nope, sorry",
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cppchriscpp/retro-host.git"
+  },
+  "author": "cppchriscpp",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/cppchriscpp/retro-host/issues"
+  },
+  "homepage": "https://github.com/cppchriscpp/retro-host#readme"
+}
