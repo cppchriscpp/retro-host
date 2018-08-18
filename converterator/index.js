@@ -84,11 +84,12 @@ fs.readdir(path.join(__dirname, '..', 'games'), function(err, gamesList) {
 
         let fullMdContents = `---
 title: "${gameDetails.attributes.title}"
+permalink: games/${game}
 ---
 
 # ${gameDetails.attributes.title}
 
-{% include ${gameDetails.attributes.emulator}.md %}
+{% include ${gameDetails.attributes.emulator}.md rom="${gameDetails.attributes.rom}" %}
 
 ${gameDetails.body}
 
@@ -97,9 +98,10 @@ ${gameDetails.body}
 
     let embedMdContents = `---
 title: "${gameDetails.attributes.title}"
+permalink: games/${game}/embed.md
 ---
 
-{% include ${gameDetails.attributes.emulator}.md %}
+{% include ${gameDetails.attributes.emulator}.md rom="${gameDetails.attributes.rom}" %}
 
 [[ Emulator details probably are needed here too; maybe in some sorta fancy question block that shows up on hover? ]]
 `;

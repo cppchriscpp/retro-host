@@ -1,10 +1,11 @@
 ---
 title: "Closing In: Barney's Daring Escape"
+permalink: games/closing-in.md
 ---
 
 # Closing In: Barney's Daring Escape
 
-{% include nes.md %}
+{% include nes.md rom="https://s3.amazonaws.com/ld42-space/master/ld42_space.latest.nes" %}
 
 
 ## Description
