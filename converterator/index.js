@@ -99,6 +99,7 @@ ${gameDetails.body}
     let embedMdContents = `---
 title: "${gameDetails.attributes.title}"
 permalink: games/${game.replace('.md', '')}/embed
+layout: none
 ---
 
 {% include ${gameDetails.attributes.emulator}.md rom="${gameDetails.attributes.rom}" %}
