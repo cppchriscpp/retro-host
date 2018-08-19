@@ -6,7 +6,7 @@
 	<title>WebNES</title>
     <meta charset="utf-8"/>
 	<meta http-equiv="Cache-Control" content="no-store" /> <!-- stops chrome from caching -->
-	
+    
 	<link rel="stylesheet" href="css/thirdparty.min.css">
 	
 	<link rel="stylesheet" href="css/main.min.css">
