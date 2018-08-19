@@ -8,6 +8,7 @@ author: peteward44
 <!DOCTYPE HTML>
 <html lang="en">
 <head>
+    <base href="/retro-host/static/nes/">
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
 	<title>WebNES</title>
     <meta charset="utf-8"/>

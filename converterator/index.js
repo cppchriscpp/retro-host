@@ -110,7 +110,7 @@ layout: none
 
 
         fs.writeFileSync(path.join(gameDetails.resultFilePath, 'index.md'), fullMdContents);
-        fs.writeFileSync(path.join(gameDetails.resultFilePath, 'embed.md'), embedMdContents);
+        fs.writeFileSync(path.join(gameDetails.resultFilePath, 'embed.html'), embedMdContents);
 
     });
 });
