@@ -225,6 +225,6 @@ author: peteward44
 	<script src="js/nes.components.min.js"></script>
 		
 	<script src="js/nes.min.js"></script>
-	<script>Gui.App.loadRomFromUrl('{{ content.rom }}');</script>
+	<script>Gui.App.loadRomFromUrl('{{ include.rom }}');</script>
 </body>
 </html>
