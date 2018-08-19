@@ -5,7 +5,7 @@ permalink: games/closing-in
 
 # Closing In: Barney's Daring Escape
 
-<iframe src="games/closing-in/embed" width="undefined" height="undefined"></iframe>
+<iframe src="/retro-host/games/closing-in/embed" width="undefined" height="undefined"></iframe>
 
 
 ## Description
