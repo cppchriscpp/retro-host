@@ -76,6 +76,9 @@ fs.readdir(path.join(__dirname, '..', 'games'), function(err, gamesList) {
         validateGameDetails(gameDetails);
         gameDetails = normalizeGameDetails(gameDetails);
 
+        gameDetails.emulatorDetails = emulatorData[gameDetails.attributes.emulator];
+
+
         logVerbose(`Putting "${gameDetails.attributes.title}" from ${gameDetails.filename} to ${gameDetails.resultFilePath}.`);
 
         if (!fs.existsSync(gameDetails.resultFilePath)) {
@@ -89,7 +92,7 @@ permalink: games/${game.replace('.md', '')}
 
 # ${gameDetails.attributes.title}
 
-<iframe src="/retro-host/games/${game.replace('.md', '')}/embed" width="${gameDetails.attributes.width}" height="${gameDetails.attributes.height}"></iframe>
+<iframe src="/retro-host/games/${game.replace('.md', '')}/embed" width="${gameDetails.emulatorDetails.width}" height="${gameDetails.emulatorDetails.height}"></iframe>
 
 ${gameDetails.body}
 
