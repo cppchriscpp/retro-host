@@ -89,7 +89,7 @@ permalink: games/${game.replace('.md', '')}
 
 # ${gameDetails.attributes.title}
 
-{% include ${gameDetails.attributes.emulator}.md rom="${gameDetails.attributes.rom}" %}
+<iframe src="/games/${game.replace('.md', '')}/embed" width="${gameDetails.attributes.width}" height="${gameDetails.attributes.height}"></iframe>
 
 ${gameDetails.body}
 

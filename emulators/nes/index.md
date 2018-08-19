@@ -4,6 +4,8 @@ url: https://github.com/peteward44/WebNES
 license: MIT
 license-url: https://github.com/peteward44/WebNES/blob/master/LICENSE
 author: peteward44
+width: 540
+height: 540
 ---
 <!DOCTYPE HTML>
 <html lang="en">

@@ -5,7 +5,7 @@ permalink: games/closing-in
 
 # Closing In: Barney's Daring Escape
 
-{% include nes.md rom="https://s3.amazonaws.com/ld42-space/master/ld42_space.latest.nes" %}
+<iframe src="/games/closing-in/embed" width="undefined" height="undefined"></iframe>
 
 
 ## Description
