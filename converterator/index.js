@@ -89,7 +89,7 @@ permalink: games/${game.replace('.md', '')}
 
 # ${gameDetails.attributes.title}
 
-<iframe src="/games/${game.replace('.md', '')}/embed" width="${gameDetails.attributes.width}" height="${gameDetails.attributes.height}"></iframe>
+<iframe src="games/${game.replace('.md', '')}/embed" width="${gameDetails.attributes.width}" height="${gameDetails.attributes.height}"></iframe>
 
 ${gameDetails.body}
 
