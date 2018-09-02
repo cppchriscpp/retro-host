@@ -141,7 +141,7 @@ function validateGameDetails(gameDetails) {
 function buildEmulatorHtml(gameDetails) {
     return `
     <div style="position: absolute; right: 10px; top: 10px;">
-    <div style="padding: 10px; background-color: gray; display: none; cursor: pointer; text-align: center; width: 24px;" id="gameQuestion">?</div>
+    <div style="padding: 10px; background-color: gray; display: none; cursor: pointer; text-align: center;" id="gameQuestion">Emulator Info</div>
     </div>
     <div style="position: absolute; right: 10px; top: 52px;">
     <div style="padding: 10px; background-color: gray; display: none;" id="gameDescription">
