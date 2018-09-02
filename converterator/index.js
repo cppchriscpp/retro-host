@@ -141,8 +141,8 @@ function validateGameDetails(gameDetails) {
 function buildEmulatorHtml(gameDetails) {
     return `
     <div style="position: absolute; right: 10px; top: 10px;">
-    <div style="padding: 10px; background-color: gray; display: none;" id="gameQuestion">?</div>
-    <div style="padding: 10px; background-color: gray; display; none;" id="gameDescription">
+    <div style="padding: 10px; background-color: gray; display: none; cursor: pointer; text-align: center;" id="gameQuestion">?</div>
+    <div style="padding: 10px; background-color: gray; display: none;" id="gameDescription">
     <p><h4><a href="${gameDetails.emulatorDetails.url}">${gameDetails.emulatorDetails.name}</a></h4></p>
     <p><strong>Author: <a href="${gameDetails.emulatorDetails.author_url}">${gameDetails.emulatorDetails.author_name}</a></p>
     <p><strong>License: <a href="${gameDetails.emulatorDetails.license_url}">${gameDetails.emulatorDetails.license}</a></p>
