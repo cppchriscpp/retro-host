@@ -155,7 +155,7 @@ function buildEmulatorHtml(gameDetails) {
             $('#gameQuestion').hide();
         }
         var questionTimeout = null;
-        $(document).onLoad(function() {
+        $(document).ready(function() {
             $('body').mousemove(function() {
                 showIt();
                 if (questionTimeout !== null) {
