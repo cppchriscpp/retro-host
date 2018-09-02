@@ -159,7 +159,7 @@ function buildEmulatorHtml(gameDetails) {
             $('body').mousemove(function() {
                 showIt();
                 if (questionTimeout !== null) {
-                    cancelTimeout(questionTimeout);
+                    clearTimeout(questionTimeout);
                 }
                 questionTimeout = setTimeout(hideIt, 5000);
             });
