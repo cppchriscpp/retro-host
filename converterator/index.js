@@ -141,20 +141,20 @@ function validateGameDetails(gameDetails) {
 function buildEmulatorHtml(gameDetails) {
     return `
     <div style="position: absolute; right: 10px; top: 10px;">
-    <div style="padding: 10px; background-color: gray; display: none; cursor: pointer; text-align: center; width: 32px;" id="gameQuestion">?</div>
+    <div style="padding: 10px; background-color: gray; display: none; cursor: pointer; text-align: center; width: 24px;" id="gameQuestion">?</div>
     </div>
-    <div style="position: absolute; right: 10px; top: 42px;">
-    <div style="padding: 10px; padding-top: 0; background-color: gray; display: none;" id="gameDescription">
+    <div style="position: absolute; right: 10px; top: 52px;">
+    <div style="padding: 10px; background-color: gray; display: none;" id="gameDescription">
     <p><strong>Emulator</strong>: <a href="${gameDetails.emulatorDetails.url}">${gameDetails.emulatorDetails.name}</a></p>
     <p><strong>Author</strong>: <a href="${gameDetails.emulatorDetails.author_url}">${gameDetails.emulatorDetails.author}</a></p>
     <p><strong>License</strong>: <a href="${gameDetails.emulatorDetails.license_url}">${gameDetails.emulatorDetails.license}</a></p>
     </div>
     <script type="text/javascript">
         function showIt() {
-            $('#gameQuestion').show();
+            $('#gameQuestion').fadeIn();
         }
         function hideIt() {
-            $('#gameQuestion').hide();
+            $('#gameQuestion').fadeOut();
         }
         var questionTimeout = null;
         $(document).ready(function() {
@@ -163,11 +163,11 @@ function buildEmulatorHtml(gameDetails) {
                 if (questionTimeout !== null) {
                     clearTimeout(questionTimeout);
                 }
-                questionTimeout = setTimeout(hideIt, 5000);
+                questionTimeout = setTimeout(hideIt, 2000);
             });
 
             $('#gameQuestion').click(function() {
-                $('#gameDescription').toggle();
+                $('#gameDescription').fadeToggle();
             });
         });
     </script>
