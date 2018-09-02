@@ -147,7 +147,6 @@ function buildEmulatorHtml(gameDetails) {
     <p><strong>Author: <a href="${gameDetails.emulatorDetails.author_url}">${gameDetails.emulatorDetails.author_name}</a></p>
     <p><strong>License: <a href="${gameDetails.emulatorDetails.license_url}">${gameDetails.emulatorDetails.license}</a></p>
     </div>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script type="text/javascript">
         function showIt() {
             $('#gameQuestion').show();
