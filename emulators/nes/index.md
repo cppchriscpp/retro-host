@@ -2,8 +2,9 @@
 name: WebNES
 url: https://github.com/peteward44/WebNES
 license: MIT
-license-url: https://github.com/peteward44/WebNES/blob/master/LICENSE
+license_url: https://github.com/peteward44/WebNES/blob/master/LICENSE
 author: peteward44
+author_url: https://github.com/peteward44
 width: 540
 height: 540
 ---
@@ -36,7 +37,7 @@ height: 540
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
-	<div id="content" class="normal" style="width:100%; height:100%; display:inline-block">
+	<div id="content" class="normal" style="width:100%; height:calc(100%-20px); display:inline-block">
 		<div id="canvasWrapper" class="wrapper">
 		</div>
 		<div id="controlBar" class="controlBar">

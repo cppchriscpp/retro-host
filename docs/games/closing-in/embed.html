@@ -6,4 +6,35 @@ layout: none
 
 {% include nes.md rom="https://s3.amazonaws.com/ld42-space/master/ld42_space.latest.nes" %}
 
-[[ Emulator details probably are needed here too; maybe in some sorta fancy question block that shows up on hover? ]]
+
+    <div style="position: absolute; right: 10px; top: 10px;">
+    <div style="padding: 10px; background-color: gray; display: none;" id="gameQuestion">?</div>
+    <div style="padding: 10px; background-color: gray; display; none;" id="gameDescription">
+    <p><h4><a href="https://github.com/peteward44/WebNES">WebNES</a></h4></p>
+    <p><strong>Author: <a href="https://github.com/peteward44">undefined</a></p>
+    <p><strong>License: <a href="https://github.com/peteward44/WebNES/blob/master/LICENSE">MIT</a></p>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        function showIt() {
+            $('#gameQuestion').show();
+        }
+        function hideIt() {
+            $('#gameQuestion').hide();
+        }
+        var questionTimeout = null;
+        $(document).onLoad(function() {
+            $('body').mousemove(function() {
+                showIt();
+                if (questionTimeout !== null) {
+                    cancelTimeout(questionTimeout);
+                }
+                questionTimeout = setTimeout(hideIt, 5000);
+            });
+
+            $('#gameQuestion').click(function() {
+                $('#gameDescription').toggle();
+            });
+        });
+    </script>
+    

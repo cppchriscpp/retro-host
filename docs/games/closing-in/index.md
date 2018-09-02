@@ -36,4 +36,3 @@ Start (Enter): Pause
 
 If you want to make something like this yourself, it's easy to get started! Check out [nes-starter-kit](https://cppchriscpp.github.io/nes-starter-kit)
 
-[[Emulator details, license, and more here]]

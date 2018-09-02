@@ -78,6 +78,8 @@ fs.readdir(path.join(__dirname, '..', 'games'), function(err, gamesList) {
 
         gameDetails.emulatorDetails = emulatorData[gameDetails.attributes.emulator];
 
+        gameDetails.emulatorAboutHtml = buildEmulatorHtml(gameDetails);
+
 
         logVerbose(`Putting "${gameDetails.attributes.title}" from ${gameDetails.filename} to ${gameDetails.resultFilePath}.`);
 
@@ -96,7 +98,6 @@ permalink: games/${game.replace('.md', '')}
 
 ${gameDetails.body}
 
-[[Emulator details, license, and more here]]
 `;
 
     let embedMdContents = `---
@@ -107,7 +108,7 @@ layout: none
 
 {% include ${gameDetails.attributes.emulator}.md rom="${gameDetails.attributes.rom}" %}
 
-[[ Emulator details probably are needed here too; maybe in some sorta fancy question block that shows up on hover? ]]
+${gameDetails.emulatorAboutHtml}
 `;
 
 
@@ -134,4 +135,40 @@ function validateGameDetails(gameDetails) {
     assert.ok(typeof gameDetails.attributes.title !== 'undefined', 'Game title not specified in markdown front matter.');
     assert.ok(typeof gameDetails.attributes.rom !== 'undefined', 'No rom url present in markdown front matter.');
     assert.ok(supportedEmulators.indexOf(gameDetails.attributes.emulator.toLowerCase()) !== -1, `Unsupported emulator ${gameDetails.attributes.emulator} found. Supported options are: ${supportedEmulators.toString()}`)
+}
+
+// Returns a fancy string of html representing the details for a game. Should be the emulator name, license and author.
+function buildEmulatorHtml(gameDetails) {
+    return `
+    <div style="position: absolute; right: 10px; top: 10px;">
+    <div style="padding: 10px; background-color: gray; display: none;" id="gameQuestion">?</div>
+    <div style="padding: 10px; background-color: gray; display; none;" id="gameDescription">
+    <p><h4><a href="${gameDetails.emulatorDetails.url}">${gameDetails.emulatorDetails.name}</a></h4></p>
+    <p><strong>Author: <a href="${gameDetails.emulatorDetails.author_url}">${gameDetails.emulatorDetails.author_name}</a></p>
+    <p><strong>License: <a href="${gameDetails.emulatorDetails.license_url}">${gameDetails.emulatorDetails.license}</a></p>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        function showIt() {
+            $('#gameQuestion').show();
+        }
+        function hideIt() {
+            $('#gameQuestion').hide();
+        }
+        var questionTimeout = null;
+        $(document).onLoad(function() {
+            $('body').mousemove(function() {
+                showIt();
+                if (questionTimeout !== null) {
+                    cancelTimeout(questionTimeout);
+                }
+                questionTimeout = setTimeout(hideIt, 5000);
+            });
+
+            $('#gameQuestion').click(function() {
+                $('#gameDescription').toggle();
+            });
+        });
+    </script>
+    `
 }
