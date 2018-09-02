@@ -23,7 +23,7 @@ layout: none
             $('#gameQuestion').hide();
         }
         var questionTimeout = null;
-        $(document).ready(function() {
+        $(document).onLoad(function() {
             $('body').mousemove(function() {
                 showIt();
                 if (questionTimeout !== null) {
