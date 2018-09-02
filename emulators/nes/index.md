@@ -37,7 +37,7 @@ height: 540
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	
-	<div id="content" class="normal" style="width:100%; height:calc(100%-20px); display:inline-block">
+	<div id="content" class="normal" style="width:100%; height:100%; display:inline-block">
 		<div id="canvasWrapper" class="wrapper">
 		</div>
 		<div id="controlBar" class="controlBar">
