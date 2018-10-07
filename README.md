@@ -1,6 +1,17 @@
-# retro-host
+# Retro Host
 
-Experimental idea for hosting retro game emulators for homebrew game developers
+Simple way to host playable online versions of retro games using javascript and Github's markdown-based hosting.
+
+Free forever.
+
+[Click here](https://cppchriscpp.github.io/retro-host) to visit the website itself. This contains a full directory of
+currently supported games.
+
+## Contributing
+
+A proper contributing guide is coming in the future. For now, please look into the `/games` directory, and copy a
+markdown file from there to add a new game. Emulators are a little more complex, and will be explained at a future
+point. If you can figure out how to do it by example, feel free to submit a PR!
 
 ## Note
 
@@ -10,7 +21,7 @@ PR to the `/games` directory, or `/emulators` for a new emu :)
 
 ## TODO
 
-- Add circle job
+- Add circle/travis job
 - rm emulators and games folders in docs, let them rebuild completely
 - Show emulator license data, etc
 - Hide emulators behind a "Click to play" Div

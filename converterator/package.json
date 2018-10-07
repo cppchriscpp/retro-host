@@ -4,7 +4,8 @@
   "description": "Converts markdown descriptions into proper pages with emulators. Specific to parent repository.",
   "main": "index.js",
   "dependencies": {
-    "front-matter": "^2.3.0"
+    "front-matter": "^2.3.0",
+    "lokijs": "^1.5.5"
   },
   "devDependencies": {},
   "scripts": {
