@@ -10,7 +10,7 @@ permalink: games/closing-in
 
 ## Description
 
-Closing in is a new game for the original Nintendo Entertainment System.
+Closing In is a new game for the original Nintendo Entertainment System.
 
 You are Barney, a dog in a world that is running out of space. An unknown power is swallowing the world whole, and to survive you have to move! 
 
@@ -30,7 +30,7 @@ Start (Enter): Pause
 
 ## Rom Download
 
-[Download]([https://s3.amazonaws.com/ld42-space/master/ld42_space.latest.nes)
+[Download](https://s3.amazonaws.com/ld42-space/master/ld42_space.latest.nes)
 
 [Source](https://github.com/cppchriscpp/daring-escape)
 

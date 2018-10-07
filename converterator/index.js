@@ -1,18 +1,24 @@
 /* 
  * Script for converting markdown description files in the repository into proper 
  * pages with emulation. Outputs into /docs/games; overwriting everything there.
- * The automation should delete the existing files, then run this to replace them.
- * That way, we'll delete any files that go away.
 */
 
 const frontMatter = require('front-matter'),
     path = require('path'),
     fs = require('fs'),
-    assert = require('assert')
+    assert = require('assert'),
+    rimraf = require('rimraf'),
+    lokijs = require('lokijs'),
     // FIXME: Default false
     isVerbose = process.env.VERBOSE || true;
 
 const supportedEmulators = fs.readdirSync(path.join(__dirname, '..', 'emulators'));
+const supportedGames = fs.readdirSync(path.join(__dirname, '..', 'games'));
+
+
+let database = new lokijs(),
+    gameCollection = database.addCollection('game');
+
 let emulatorData = {};
 
 function logVerbose() {
@@ -27,7 +33,11 @@ function logError() {
     console.error.apply(this, arguments);
 }
 
-// Make sure the game output directory is present
+// We rebuild the games+include directories every time to make sure to remove old games/emulators.
+rimraf.sync(path.join(__dirname, '..', 'docs', 'games'));
+rimraf.sync(path.join(__dirname, '..', 'docs', '_includes'));
+
+// Build out the games and includes folders in case they don't exist. (Or just got destroyed >_>)
 if (!fs.existsSync(path.join(__dirname, '..', 'docs', 'games'))) {
     logVerbose('Creating output games directory...');
     fs.mkdirSync(path.join(__dirname, '..', 'docs', 'games'));
@@ -51,43 +61,40 @@ supportedEmulators.forEach(function(emulator) {
 });
 
 
-fs.readdir(path.join(__dirname, '..', 'games'), function(err, gamesList) {
-    if (err) {
-        logError('Failed reading games list. Dying!', err);
-        process.exit(1);
-    }
     
-    gamesList.forEach(function(game) {
-        const gamePath = path.join(__dirname, '..', 'games', game),
-        // Using sync methods to make code simpler and more readable. We don't care that much about performance here.
-            gameData = fs.readFileSync(gamePath).toString();
+supportedGames.forEach(function(game) {
+    const gamePath = path.join(__dirname, '..', 'games', game),
+    // Using sync methods to make code simpler and more readable. We don't care that much about performance here.
+        gameData = fs.readFileSync(gamePath).toString();
 
 
-        let gameDetails = frontMatter(gameData);
-        gameDetails.filename = gamePath;
-        gameDetails.resultFilePath = path.join(__dirname, '..', 'docs', 'games', game.replace('.md', ''));
+    let gameDetails = frontMatter(gameData);
+    gameDetails.filename = gamePath;
+    gameDetails.resultFilePath = path.join(__dirname, '..', 'docs', 'games', game.replace('.md', ''));
 
-        // Normally I'd probably put this in the normalize function, but this needs to happen prior to validation.
-        // Other stuff in validation needs to happen prior to normalizing... so, meh, we'll do this.
-        if (!gameDetails.attributes.emulator || gameDetails.attributes.emulator === 'default') {
-            gameDetails.attributes.emulator = gameDetails.attributes.console;
-        }    
+    // Normally I'd probably put this in the normalize function, but this needs to happen prior to validation.
+    // Other stuff in validation needs to happen prior to normalizing... so, meh, we'll do this.
+    if (!gameDetails.attributes.emulator || gameDetails.attributes.emulator === 'default') {
+        gameDetails.attributes.emulator = gameDetails.attributes.console;
+    }    
 
-        validateGameDetails(gameDetails);
-        gameDetails = normalizeGameDetails(gameDetails);
+    validateGameDetails(gameDetails);
+    gameDetails = normalizeGameDetails(gameDetails);
 
-        gameDetails.emulatorDetails = emulatorData[gameDetails.attributes.emulator];
+    gameDetails.emulatorDetails = emulatorData[gameDetails.attributes.emulator];
 
-        gameDetails.emulatorAboutHtml = buildEmulatorHtml(gameDetails);
+    gameDetails.emulatorAboutHtml = buildEmulatorHtml(gameDetails);
 
 
-        logVerbose(`Putting "${gameDetails.attributes.title}" from ${gameDetails.filename} to ${gameDetails.resultFilePath}.`);
+    logVerbose(`Putting "${gameDetails.attributes.title}" from ${gameDetails.filename} to ${gameDetails.resultFilePath}.`);
 
-        if (!fs.existsSync(gameDetails.resultFilePath)) {
-            fs.mkdirSync(gameDetails.resultFilePath);
-        }
+    gameCollection.insert(gameDetails);
 
-        let fullMdContents = `---
+    if (!fs.existsSync(gameDetails.resultFilePath)) {
+        fs.mkdirSync(gameDetails.resultFilePath);
+    }
+
+    let fullMdContents = `---
 title: "${gameDetails.attributes.title}"
 permalink: games/${game.replace('.md', '')}
 ---
@@ -113,16 +120,35 @@ ${gameDetails.emulatorAboutHtml}
 
 
 
-        fs.writeFileSync(path.join(gameDetails.resultFilePath, 'index.md'), fullMdContents);
-        fs.writeFileSync(path.join(gameDetails.resultFilePath, 'embed.html'), embedMdContents);
+    fs.writeFileSync(path.join(gameDetails.resultFilePath, 'index.md'), fullMdContents);
+    fs.writeFileSync(path.join(gameDetails.resultFilePath, 'embed.html'), embedMdContents);
 
-    });
 });
+
+// Okay, time to build up the index page.
+let homeMarkdown = `
+# About 
+
+Retro Host is a simple free way to host your retro games. It provides the emulator, the hosting, and the
+webpage - you just supply some details about your game!
+
+To add new games, click the "View on GitHub" link above, and submit a pull request!
+
+Current Game List:
+
+`;
+
+gameCollection.find({}).forEach(function(game) {
+    homeMarkdown += "- [" + game.attributes.title + "](" + game.attributes.path + ")\n";
+});
+
+fs.writeFileSync(path.join(__dirname, '..', 'docs', 'README.md'), homeMarkdown);
 
 // Do a bunch of normalization on the game's attributes to avoid silly mistakes. (Changing case, merging fields, etc)
 function normalizeGameDetails(gameDetails) {
     gameDetails.attributes.emulator = gameDetails.attributes.emulator.toLowerCase();
     gameDetails.attributes.console = gameDetails.attributes.console.toLowerCase();
+    gameDetails.attributes.path = '/retro-host/games/' + path.basename(gameDetails.resultFilePath);
 
     return gameDetails;
 }
