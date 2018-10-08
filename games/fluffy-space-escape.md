@@ -1,7 +1,7 @@
 ---
 title: "Fluffy Space Escape"
-rom: http://cpprograms.net/devnull/lava_lamp.nes
-download: http://cpprograms.net/devnull/lava_lamp.nes
+rom: https://s3.amazonaws.com/cpprograms-nes-games-https/lava_lamp.nes
+download: https://s3.amazonaws.com/cpprograms-nes-games-https/lava_lamp.nes
 console: NES
 ---
 
