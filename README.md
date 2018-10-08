@@ -32,3 +32,5 @@ PR to the `/games` directory, or `/emulators` for a new emu :)
 - Link people to how to add their game, if they're interested. We want this to spread!
 - Maybe: Customize the displayed page a bit better; would be nice to show game as title, lose subheading
 - Show download link for rom; hopefully customizable with the skin
+- FAQ page...
+-- How to set up an s3 bucket to host things right (cors rules)
