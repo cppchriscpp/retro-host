@@ -7,6 +7,9 @@ Free forever.
 [Click here](https://cppchriscpp.github.io/retro-host) to visit the website itself. This contains a full directory of
 currently supported games.
 
+To embed any game within a webpage, just append /embed to the url. You can just add this to an iframe on
+any old site. It's that easy.
+
 ## Contributing
 
 A proper contributing guide is coming in the future. For now, please look into the `/games` directory, and copy a
@@ -34,3 +37,4 @@ PR to the `/games` directory, or `/emulators` for a new emu :)
 - Show download link for rom; hopefully customizable with the skin
 - FAQ page...
 -- How to set up an s3 bucket to host things right (cors rules)
+- Search feature? lokijs supports clientside use...
