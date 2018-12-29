@@ -10,3 +10,4 @@ Current Game List:
 
 - [Closing In: Barney's Daring Escape](/retro-host/games/closing-in)
 - [Fluffy Space Escape](/retro-host/games/fluffy-space-escape)
+- [Retro Puzzle Maker](/retro-host/games/retro-puzzle-maker)

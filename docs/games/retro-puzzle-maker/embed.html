@@ -1,0 +1,41 @@
+---
+title: "Retro Puzzle Maker"
+permalink: games/retro-puzzle-maker/embed
+layout: none
+---
+
+{% include nes.md rom="https://s3.amazonaws.com/cpprograms-nes-games-https/retro-puzzle-maker.nes" %}
+
+
+    <div style="position: absolute; right: 10px; top: 10px;">
+    <div style="padding: 10px; background-color: gray; display: none; cursor: pointer; text-align: center;" id="gameQuestion">Emulator Info</div>
+    </div>
+    <div style="position: absolute; right: 10px; top: 52px;">
+    <div style="padding: 10px; background-color: gray; display: none;" id="gameDescription">
+    <p><strong>Emulator</strong>: <a href="https://github.com/peteward44/WebNES">WebNES</a></p>
+    <p><strong>Author</strong>: <a href="https://github.com/peteward44">peteward44</a></p>
+    <p><strong>License</strong>: <a href="https://github.com/peteward44/WebNES/blob/master/LICENSE">MIT</a></p>
+    </div>
+    <script type="text/javascript">
+        function showIt() {
+            $('#gameQuestion').fadeIn();
+        }
+        function hideIt() {
+            $('#gameQuestion').fadeOut();
+        }
+        var questionTimeout = null;
+        $(document).ready(function() {
+            $('body').mousemove(function() {
+                showIt();
+                if (questionTimeout !== null) {
+                    clearTimeout(questionTimeout);
+                }
+                questionTimeout = setTimeout(hideIt, 2000);
+            });
+
+            $('#gameQuestion').click(function() {
+                $('#gameDescription').fadeToggle();
+            });
+        });
+    </script>
+    
