@@ -38,3 +38,8 @@ PR to the `/games` directory, or `/emulators` for a new emu :)
 - FAQ page...
 -- How to set up an s3 bucket to host things right (cors rules)
 - Search feature? lokijs supports clientside use...
+- Syntax validator for PRs? Could also make sure rom urls worked with CORS
+- Support more consoles
+-- Gameboy
+-- Genesis?
+-- c64? 
